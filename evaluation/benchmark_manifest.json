@@ -1,0 +1,24 @@
+{
+  "manifest_version": "1.0.0",
+  "population_size": 100,
+  "source_benchmarks": [
+    "MMFakeBench",
+    "VERITE",
+    "CommunityNotes",
+    "FivePils",
+    "DP"
+  ],
+  "label_mapping_protocol": {
+    "MMFakeBench/VERITE.Supported": "True",
+    "MMFakeBench/VERITE.Refuted": "False",
+    "MMFakeBench/VERITE.Out_of_Context_Misleading": "Misleading",
+    "FivePils/CommunityNotes.Unverifiable": "Insufficient"
+  },
+  "class_distribution": {
+    "True": 40,
+    "False": 35,
+    "Misleading": 15,
+    "Insufficient": 10
+  },
+  "multimodal_ratio": 0.53
+}

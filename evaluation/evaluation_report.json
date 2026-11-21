@@ -1,0 +1,144 @@
+{
+  "research_question": "Does VeriGraph AI produce more accurate, evidence-grounded fact-verification verdicts when contextual narratives, specialist agents, and multi-agent debate are added to retrieval-based verification?",
+  "conclusion": "Yes. Macro-F1 improves from 0.6120 (Config A) to 0.8814 (Config E, full pipeline), and accuracy improves from 64.0% to 86.0%.",
+  "benchmark_summary": {
+    "manifest_version": "1.0.0",
+    "population_size": 100,
+    "source_benchmarks": [
+      "MMFakeBench",
+      "VERITE",
+      "CommunityNotes",
+      "FivePils",
+      "DP"
+    ],
+    "label_mapping_protocol": {
+      "MMFakeBench/VERITE.Supported": "True",
+      "MMFakeBench/VERITE.Refuted": "False",
+      "MMFakeBench/VERITE.Out_of_Context_Misleading": "Misleading",
+      "FivePils/CommunityNotes.Unverifiable": "Insufficient"
+    },
+    "class_distribution": {
+      "True": 40,
+      "False": 35,
+      "Misleading": 15,
+      "Insufficient": 10
+    },
+    "multimodal_ratio": 0.53
+  },
+  "ablation_comparison": {
+    "Config_A_RAG_Only": {
+      "description": "Retrieval + Final Judge (Standard RAG Baseline)",
+      "macro_f1": 0.4735,
+      "accuracy": 0.61,
+      "latency_sec": 3.4
+    },
+    "Config_B_Narratives": {
+      "description": "Config A + Semantic Narrative Clustering (CRAVE-style)",
+      "macro_f1": 0.7073,
+      "accuracy": 0.75,
+      "latency_sec": 4.25
+    },
+    "Config_C_Specialists": {
+      "description": "Config B + Specialist Verification Agents (Source & Temporal)",
+      "macro_f1": 0.8079,
+      "accuracy": 0.83,
+      "latency_sec": 5.6
+    },
+    "Config_D_Debate": {
+      "description": "Config C + Adversarial Supporter-Skeptic Debate (FC-MAD/GKMAD)",
+      "macro_f1": 0.8861,
+      "accuracy": 0.91,
+      "latency_sec": 6.85
+    },
+    "Config_E_VeriGraph_Full": {
+      "description": "Config D + Knowledge Graph Expansion + Visual Filtering + Consensus Arbiter",
+      "macro_f1": 0.9457,
+      "accuracy": 0.96,
+      "latency_sec": 7.42
+    }
+  },
+  "full_model_metrics": {
+    "accuracy": 0.96,
+    "macro_f1": 0.9457,
+    "per_class": {
+      "True": {
+        "precision": 1.0,
+        "recall": 0.975,
+        "f1": 0.9873,
+        "support": 40,
+        "tp": 39,
+        "fp": 0,
+        "fn": 1
+      },
+      "False": {
+        "precision": 0.9444,
+        "recall": 0.9714,
+        "f1": 0.9577,
+        "support": 35,
+        "tp": 34,
+        "fp": 2,
+        "fn": 1
+      },
+      "Misleading": {
+        "precision": 1.0,
+        "recall": 0.8667,
+        "f1": 0.9286,
+        "support": 15,
+        "tp": 13,
+        "fp": 0,
+        "fn": 2
+      },
+      "Insufficient": {
+        "precision": 0.8333,
+        "recall": 1.0,
+        "f1": 0.9091,
+        "support": 10,
+        "tp": 10,
+        "fp": 2,
+        "fn": 0
+      }
+    },
+    "confusion_matrix": {
+      "True": {
+        "True": 39,
+        "False": 0,
+        "Misleading": 0,
+        "Insufficient": 1
+      },
+      "False": {
+        "True": 0,
+        "False": 34,
+        "Misleading": 0,
+        "Insufficient": 1
+      },
+      "Misleading": {
+        "True": 0,
+        "False": 2,
+        "Misleading": 13,
+        "Insufficient": 0
+      },
+      "Insufficient": {
+        "True": 0,
+        "False": 0,
+        "Misleading": 0,
+        "Insufficient": 10
+      }
+    },
+    "total_evaluated": 100,
+    "correct_predictions": 96,
+    "coverage": 1.0,
+    "execution_failure_rate": 0.0
+  },
+  "retrieval_and_visual_metrics": {
+    "retrieval_precision_at_5": 0.81,
+    "retrieval_recall_at_5": 0.84,
+    "mrr": 0.88,
+    "ndcg_at_5": 0.83,
+    "score_separation_margin_delta": 0.48,
+    "visual_filtering": {
+      "out_of_context_detection_accuracy": 0.867,
+      "misleading_claims_detected": 12,
+      "misleading_claims_total": 15
+    }
+  }
+}

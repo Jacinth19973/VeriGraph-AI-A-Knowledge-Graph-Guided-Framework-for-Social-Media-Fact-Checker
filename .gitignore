@@ -1,0 +1,102 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific - Exclude as requested
+Datasets/
+datasets/
+tests/
+notebooks/
+node_modules/
+.pytest_cache/
+saved_bge_base_model/
+saved_clip_model/
+
+# Runtime data
+runtime/cases/
+runtime/uploads/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Large files / Media
+*.pdf
+*.ppt
+*.pptx
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.ico
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Package lock files (optional - keep if needed)
+# package-lock.json
+
+# Benchmark predictions (data file)
+benchmark_predictions.csv
+
+# VeriGraph specific
+VeriGraph_AI_Project_Report_Restructured*.docx
+VeriGraph_AI_System_Architecture_Updated.png
+VeriGraph_Comparison_Table.png
+verigraph_ai_paper.tex
+VeriGraphAI_Review*.pptx
+Screen Recording*.mp4
+MANUSCRIPT*.pdf
+Gmail*.pdf
+*.ppt
+A Knowledge-Graph-Guided Framework*.pdf
+Review*.pptx
+Template Project Review*.ppt
